@@ -1,0 +1,13 @@
+{
+  "common": {
+    "copy": "Copy Link",
+    "CopySuccessful": "CopySuccessful",
+    "show": "View in 3D",
+    "loading": "Loading Model...",
+    "ok": "Yes"
+  },
+  "model_view": {
+    "drag_tips": "Press and slide the screen",
+    "not_exist": "Model does not exist"
+  }
+}

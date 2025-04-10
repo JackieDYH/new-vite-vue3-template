@@ -1,0 +1,27 @@
+/* Adaptation part (defined by the 375px design draft. The method used only needs to be divided by 100 and converted to rem) */
+html {
+  font-size: 13.3333vw;
+}
+
+@media screen and (width < 751px) {
+  html {
+    font-size: 13.3333vw;
+  }
+}
+
+@media screen and (width > 750px) {
+  html {
+    font-size: 400px;
+  }
+}
+body {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding-right: constant(safe-area-inset-right);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: constant(safe-area-inset-left);
+  padding-left: env(safe-area-inset-left);
+  color: #232833;
+}

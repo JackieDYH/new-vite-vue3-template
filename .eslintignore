@@ -1,0 +1,13 @@
+node_modules
+.vscode
+.idea
+dist
+/public
+/docs
+.husky
+.local
+.git
+/bin
+/mock/*
+.postcss.config.js
+vite.config.ts

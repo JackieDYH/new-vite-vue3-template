@@ -1,0 +1,13 @@
+{
+  "common": {
+    "copy": "复制链接",
+    "CopySuccessful": "复制成功",
+    "show": "3D展示",
+    "loading": "模型加载中...",
+    "ok": "是"
+  },
+  "model_view": {
+    "drag_tips": "按住并滑动屏幕",
+    "not_exist": "模型不存在"
+  }
+}

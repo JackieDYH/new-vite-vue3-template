@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: applet-template-frontend
+  name: applet-template-frontend
+  namespace: mita3d #一定要写名称空间
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  selector:
+    matchLabels:
+      app: applet-template-frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: applet-template-frontend
+    spec:
+      imagePullSecrets:
+        - name: acr-credential-secret-aggregation #提前在项目下配置访问阿里云的账号密码
+      containers:
+        - name: applet-template-frontend
+          image: ${IMAGE}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 90
+            timeoutSeconds: 5
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 60
+            timeoutSeconds: 50
+            failureThreshold: 30
+            periodSeconds: 10
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - sleep
+                  - 30s
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 2048Mi
+            requests:
+              cpu: 500m
+              memory: 256Mi
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      volumes:
+       - name: nginx-conf
+         configMap:
+          name: nginx-conf
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: applet-template-frontend
+  name: applet-template-frontend
+  namespace: mita3d
+spec:
+  selector:
+    app: applet-template-frontend
+  sessionAffinity: None
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 30002
+      protocol: TCP
+      targetPort: 80
