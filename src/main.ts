@@ -1,5 +1,5 @@
 import { createApp } from "vue"
-import i18n from "../i18n"
+import i18n from "./locales/i18n"
 import "./assets/styles/index.scss"
 import "virtual:uno.css"
 import "@unocss/reset/tailwind-compat.css"
