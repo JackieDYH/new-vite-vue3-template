@@ -8,7 +8,7 @@ export default {
     //   propList: ["*"] // 指定转换的属性列表
     // }
     "postcss-pxtorem": {
-      rootValue: 37.5, // 设计稿宽度 / 10（如设计稿375px → 37.5）
+      rootValue: 119.4, // 设计稿宽度 / 10（如设计稿375px → 37.5）
       propList: ["*"],
       selectorBlackList: ["no-rem", "el-", "van-"]
     }
