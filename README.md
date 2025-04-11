@@ -1,5 +1,6 @@
 ## new-vite-vue3-template
 - vue3 + vite + ts + vue-router + pinia + vue-i18n + vant + axios
+- postcss-pxtorem + amfe-flexible 实现rem适配
 
 
 # Vue 3 + TypeScript + Vite

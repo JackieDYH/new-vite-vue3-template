@@ -6,6 +6,7 @@ import "@unocss/reset/tailwind-compat.css"
 import router from "./router"
 import App from "./App.vue"
 import pinia from "@/stores"
+import "amfe-flexible"
 // import vConsole from "vconsole"
 // new vConsole()
 
